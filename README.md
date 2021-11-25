@@ -2,7 +2,7 @@
 Small deep learning, machine learning, NLP and visualisation projects
 
 
-## Natural Language processing:
+## Natural Language Processing:
 - COVID topic modelling (Latent Dirichlet allocation model) - Omdena Project 
 - SexEducation studies text summarizer - Omdena Project
 

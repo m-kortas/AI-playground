@@ -19,4 +19,7 @@ Small deep learning, machine learning, NLP and visualisation projects
 
 - CO2 emissions and Renewable Energy in Netherlands - Adaptation of renewable energy sources to reduce Co2 emission growth project at Eindhoven University of Technology (2020)
 
+- Analysis and visualisation of Tweets about Climate Strikes around the World (Shiny App)
+
+
 

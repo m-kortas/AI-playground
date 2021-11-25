@@ -11,7 +11,7 @@ Small deep learning, machine learning, NLP and visualisation projects
 - Waste Detection in Pomerania - WIMLDS Project **[AI to combat environmental pollution](https://towardsdatascience.com/ai-to-combat-environmental-pollution-6d58b0bf6a1)**  (2021)
 
 ## Machine Learning
-- Predicting water potability (Random Forest classification) **[Kaggle Water Potability](https://www.kaggle.com/adityakadiwal/water-potability)
+- Predicting water potability (Random Forest classification) **[Kaggle Water Potability](https://www.kaggle.com/adityakadiwal/water-potability)**
 - Personality types clustering (KMeans clustering)
 
 ## Viz

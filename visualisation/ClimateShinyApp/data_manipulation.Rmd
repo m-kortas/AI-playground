@@ -1,0 +1,67 @@
+---
+title: ""
+output: html_document
+---
+
+```{r}
+  found_tweets <<- search_tweets(q = '#climatestrike', n = 2000, type = "mixed", include_rts = FALSE)   
+  saveRDS(found_tweets, file = "tweets.Rds")
+```
+
+
+```{r}
+ found_tweets<<-readRDS("tweets.Rds") 
+    top <- arrange(found_tweets, desc(favorite_count))
+    top1 <<- head(top, n = 5)
+    dane <- found_tweets$text
+    docs <- Corpus(VectorSource(dane))
+    docs <- tm_map(docs, tolower) 
+    docs <- tm_map(docs, removeNumbers) 
+    docs <- tm_map(docs, removeWords, stopwords("english")) 
+    docs <- tm_map(docs, removePunctuation) 
+    docs <<- tm_map(docs, stripWhitespace) 
+    dtm <<- TermDocumentMatrix(docs)     
+    m   <- as.matrix(dtm)                   
+    v   <- sort(rowSums(m), decreasing=TRUE)   
+    d   <<- data.frame(word=names(v), freq=v) 
+    d <<- d[-1,]
+```
+
+```{r}
+    df_sentiment<-get_nrc_sentiment(as.String(d$word)) 
+    df_sentiment_transposed <- t(df_sentiment)
+    df_sentiment_final <- data.frame(sentiment=row.names(df_sentiment_transposed),sent_value=df_sentiment_transposed, row.names=NULL) 
+    df_emotions <<- df_sentiment_final[1:8,]    
+    df_sentiments <<- df_sentiment_final[9:10,] 
+    df_sentiments %>% mutate(percent = df_sentiments$sent_value/sum(df_sentiments$sent_value)) ->> df_sentiments
+```
+
+```{r}
+    text_dtm <<- DocumentTermMatrix(docs)
+    text_lda1 <<- LDA(text_dtm, k = 2, method = "VEM", control = NULL)
+    text_topics <<- tidy(text_lda1, matrix = "beta")
+    text_top_terms1 <<- text_topics %>%
+      group_by(topic) %>%
+      top_n(10, beta) %>%
+    ungroup() %>%
+    arrange(topic, -beta)
+```
+
+```{r}
+  term1 <- as.character(d[1,1])
+    assocs <- findAssocs(dtm, terms = term1, corlimit = 0.2)  
+    df <- ldply(assocs[[1]], data.frame)
+    df$word <- df$.id 
+    df$per <- df$X..i..*100 
+```
+
+```{r}
+ saveRDS(df_sentiments, file = "df_sentiment.Rds")
+ saveRDS(df_emotions, file = "df_emotions.Rds")
+ saveRDS(d, file = "d.Rds")
+ saveRDS(top1, file = "top1.Rds")
+ saveRDS(df, file = "df.Rds")
+```
+
+
+

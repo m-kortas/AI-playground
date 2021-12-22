@@ -1,10 +1,10 @@
-import cv2
-from flask import Flask, request
-import numpy as np
 import io
-from keras.applications import ResNet50, VGG16
-from keras.applications.imagenet_utils import decode_predictions
 
+import cv2
+import numpy as np
+from flask import Flask, request
+from keras.applications import ResNet50
+from keras.applications.imagenet_utils import decode_predictions
 
 app = Flask(__name__)
 
@@ -16,6 +16,7 @@ def img_from_file(photo):
     photo.save(in_memory_file)
     data = np.fromstring(in_memory_file.getvalue(), dtype=np.uint8)
     return cv2.imdecode(data, cv2.IMREAD_COLOR)
+
 
 @app.route("/")
 def main():

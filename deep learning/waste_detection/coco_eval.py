@@ -1,17 +1,13 @@
+import copy
 import json
-import tempfile
+from collections import defaultdict
 
 import numpy as np
-import copy
-import time
+import pycocotools.mask as mask_util
 import torch
 import torch._six
-
-from pycocotools.cocoeval import COCOeval
 from pycocotools.coco import COCO
-import pycocotools.mask as mask_util
-
-from collections import defaultdict
+from pycocotools.cocoeval import COCOeval
 
 import utils
 
@@ -47,8 +43,10 @@ class CocoEvaluator(object):
 
     def synchronize_between_processes(self):
         for iou_type in self.iou_types:
-            self.eval_imgs[iou_type] = np.concatenate(self.eval_imgs[iou_type], 2)
-            create_common_coco_eval(self.coco_eval[iou_type], self.img_ids, self.eval_imgs[iou_type])
+            self.eval_imgs[iou_type] = np.concatenate(
+                self.eval_imgs[iou_type], 2)
+            create_common_coco_eval(
+                self.coco_eval[iou_type], self.img_ids, self.eval_imgs[iou_type])
 
     def accumulate(self):
         for coco_eval in self.coco_eval.values():
@@ -109,7 +107,8 @@ class CocoEvaluator(object):
             labels = prediction["labels"].tolist()
 
             rles = [
-                mask_util.encode(np.array(mask[0, :, :, np.newaxis], order="F"))[0]
+                mask_util.encode(
+                    np.array(mask[0, :, :, np.newaxis], order="F"))[0]
                 for mask in masks
             ]
             for rle in rles:
@@ -257,8 +256,10 @@ def loadRes(self, resFile):
     assert set(annsImgIds) == (set(annsImgIds) & set(self.getImgIds())), \
         'Results do not correspond to current coco set'
     if 'caption' in anns[0]:
-        imgIds = set([img['id'] for img in res.dataset['images']]) & set([ann['image_id'] for ann in anns])
-        res.dataset['images'] = [img for img in res.dataset['images'] if img['id'] in imgIds]
+        imgIds = set([img['id'] for img in res.dataset['images']]
+                     ) & set([ann['image_id'] for ann in anns])
+        res.dataset['images'] = [
+            img for img in res.dataset['images'] if img['id'] in imgIds]
         for id, ann in enumerate(anns):
             ann['id'] = id + 1
     elif 'bbox' in anns[0] and not anns[0]['bbox'] == []:
@@ -338,7 +339,8 @@ def evaluate(self):
         for imgId in p.imgIds
     ]
     # this is NOT in the pycocotools code, but could be done outside
-    evalImgs = np.asarray(evalImgs).reshape(len(catIds), len(p.areaRng), len(p.imgIds))
+    evalImgs = np.asarray(evalImgs).reshape(
+        len(catIds), len(p.areaRng), len(p.imgIds))
     self._paramsEval = copy.deepcopy(self.params)
     # toc = time.time()
     # print('DONE (t={:0.2f}s).'.format(toc-tic))

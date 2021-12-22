@@ -8,7 +8,6 @@ from bokeh.models import (ColorBar, GeoJSONDataSource, HoverTool,
 from bokeh.palettes import brewer
 from bokeh.plotting import figure, output_file, save
 
-# your data, the municipality column is called "city"
 merged = pd.read_csv('../data/data.csv')
 merged = merged[['city', 'sum']]
 
@@ -22,7 +21,6 @@ data = pd.merge(geo_data, merged, how='left', on=[
 
 merged_json = json.loads(data.to_json())
 json_data = json.dumps(merged_json)
-
 
 def plot_map(column, title, low, high, text):
     geosource = GeoJSONDataSource(geojson=json_data)
@@ -47,7 +45,7 @@ def plot_map(column, title, low, high, text):
     show(p)
 
 
-for col in ['sum']:  # choose for which columns
+for col in ['sum']: 
     output_file(col + ".html")
     plot = plot_map(column=col,
                     title="CO2 emissions per municipality: " + col,

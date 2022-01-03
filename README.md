@@ -24,6 +24,7 @@ Small deep learning, machine learning, NLP and visualisation projects
   Classification) **[Kaggle - Predicting if water is safe for human consumption](https://www.kaggle.com/adityakadiwal/water-potability)** (2021)
 - Clustering user according to psychological profiles and demography (KMeans clustering) (2021)
 - Covid Impact By Country - the influence of lockdowns, vaccinations and Human Development Index (Random Forest, Explainable AI) (2021)
+- Hofstede’s Six Dimensions Clustering - comparing and contrasting cultures of different countries based on six anthropological areas that define various societies (K-means clustering, PCA) (2021)
 
 
 ## Viz

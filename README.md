@@ -10,7 +10,7 @@ Small deep learning, machine learning, NLP and visualisation projects
   Challenge **[Improving sex education by exploring sexually related discussions using NLP](https://medium.com/omdena/improving-sex-education-by-exploring-sexually-related-discussions-using-nlp-780a8e09d338)** (2020)
 - #ClimateStrikes Tweets Sentiment Analysis Application (R Shiny, NLP) - **[Check out the app!](https://mkortas.shinyapps.io/The-Greta-Effect/)** (2020)
 - Real-Time Twitter Sentiment Analysis Application (R Shiny, NLP) - The 2019 Data Viz Competition at Women in Analytics
-  Conference **[Check out the app!](https://mkortas.shinyapps.io/test3/)**
+  Conference 
 
 ## Deep Learning
 

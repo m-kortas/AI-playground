@@ -4,8 +4,6 @@
 
 App created in 2018
 
-Check the app [here](https://mkortas.shinyapps.io/test3/)
-
 ### What people think?
 
 Sometimes it is good to have a bigger picture and to not rely on information from only one source. What if we could in a

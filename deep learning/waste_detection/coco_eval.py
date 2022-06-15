@@ -67,7 +67,8 @@ class CocoEvaluator(object):
         else:
             raise ValueError("Unknown iou type {}".format(iou_type))
 
-    def prepare_for_coco_detection(self, predictions):
+    @staticmethod
+    def prepare_for_coco_detection(predictions):
         coco_results = []
         for original_id, prediction in predictions.items():
             if len(prediction) == 0:
@@ -91,14 +92,15 @@ class CocoEvaluator(object):
             )
         return coco_results
 
-    def prepare_for_coco_segmentation(self, predictions):
+    @staticmethod
+    def prepare_for_coco_segmentation(predictions):
         coco_results = []
         for original_id, prediction in predictions.items():
             if len(prediction) == 0:
                 continue
 
-            scores = prediction["scores"]
-            labels = prediction["labels"]
+            prediction["scores"]
+            prediction["labels"]
             masks = prediction["masks"]
 
             masks = masks > 0.5
@@ -127,14 +129,15 @@ class CocoEvaluator(object):
             )
         return coco_results
 
-    def prepare_for_coco_keypoint(self, predictions):
+    @staticmethod
+    def prepare_for_coco_keypoint(predictions):
         coco_results = []
         for original_id, prediction in predictions.items():
             if len(prediction) == 0:
                 continue
 
             boxes = prediction["boxes"]
-            boxes = convert_to_xywh(boxes).tolist()
+            convert_to_xywh(boxes).tolist()
             scores = prediction["scores"].tolist()
             labels = prediction["labels"].tolist()
             keypoints = prediction["keypoints"]
@@ -299,12 +302,13 @@ def loadRes(self, resFile):
 
 
 def evaluate(self):
-    '''
+    """
     Run per image evaluation on given images and store results (a list of dict) in self.evalImgs
     :return: None
-    '''
+    """
     # tic = time.time()
     # print('Running per image evaluation...')
+    global computeIoU
     p = self.params
     # add backward compatibility if useSegm is specified in params
     if p.useSegm is not None:

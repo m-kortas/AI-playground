@@ -22,6 +22,7 @@ data = pd.merge(geo_data, merged, how='left', on=[
 merged_json = json.loads(data.to_json())
 json_data = json.dumps(merged_json)
 
+
 def plot_map(column, title, low, high, text):
     geosource = GeoJSONDataSource(geojson=json_data)
     palette = brewer['YlOrRd'][4]
@@ -45,7 +46,7 @@ def plot_map(column, title, low, high, text):
     show(p)
 
 
-for col in ['sum']: 
+for col in ['sum']:
     output_file(col + ".html")
     plot = plot_map(column=col,
                     title="CO2 emissions per municipality: " + col,

@@ -1,7 +1,7 @@
-import math
 import sys
 import time
 
+import math
 import torch
 import torchvision.models.detection.mask_rcnn
 

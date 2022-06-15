@@ -84,11 +84,7 @@ class ConvertCocoPolysToMask(object):
         if keypoints is not None:
             keypoints = keypoints[keep]
 
-        target = {}
-        target["boxes"] = boxes
-        target["labels"] = classes
-        target["masks"] = masks
-        target["image_id"] = image_id
+        target = {"boxes": boxes, "labels": classes, "masks": masks, "image_id": image_id}
         if keypoints is not None:
             target["keypoints"] = keypoints
 
@@ -142,6 +138,7 @@ def _coco_remove_images_without_annotations(dataset, cat_list=None):
 
 
 def convert_to_coco_api(ds):
+    global keypoints, masks
     coco_ds = COCO()
     ann_id = 0
     dataset = {'images': [], 'categories': [], 'annotations': []}
@@ -151,10 +148,7 @@ def convert_to_coco_api(ds):
         # targets = ds.get_annotations(img_idx)
         img, targets = ds[img_idx]
         image_id = targets["image_id"].item()
-        img_dict = {}
-        img_dict['id'] = image_id
-        img_dict['height'] = img.shape[-2]
-        img_dict['width'] = img.shape[-1]
+        img_dict = {'id': image_id, 'height': img.shape[-2], 'width': img.shape[-1]}
         dataset['images'].append(img_dict)
         bboxes = targets["boxes"]
         bboxes[:, 2:] -= bboxes[:, :2]
@@ -171,10 +165,7 @@ def convert_to_coco_api(ds):
             keypoints = keypoints.reshape(keypoints.shape[0], -1).tolist()
         num_objs = len(bboxes)
         for i in range(num_objs):
-            ann = {}
-            ann['image_id'] = image_id
-            ann['bbox'] = bboxes[i]
-            ann['category_id'] = labels[i]
+            ann = {'image_id': image_id, 'bbox': bboxes[i], 'category_id': labels[i]}
             categories.add(labels[i])
             ann['area'] = areas[i]
             ann['iscrowd'] = iscrowd[i]

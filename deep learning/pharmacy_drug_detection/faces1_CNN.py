@@ -111,9 +111,9 @@ def generate_dataset(labels_file, dirname, batch_size=32):
             label = np_utils.to_categorical(label, 52)
             labels.append(label)
 
-        yield (np.array(images), np.array(labels))
+        yield np.array(images), np.array(labels)
 
-        cnt = cnt + 1
+        cnt + 1
 
 
 def main():

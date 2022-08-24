@@ -34,9 +34,7 @@ Small deep learning, machine learning, NLP and visualisation projects
 ## Viz
 
 - Data Science jobs on Linkedin (Bokeh)
-    - **[Where it is the easiest to get data science job?](https://towardsdatascience.com/where-it-is-the-easiest-to-get-data-science-job-not-where-you-may-think-28e33ec652b3)** (
-
-    2020)
+    - **[Where it is the easiest to get data science job?](https://towardsdatascience.com/where-it-is-the-easiest-to-get-data-science-job-not-where-you-may-think-28e33ec652b3)** (2020)
 
 - CO2 emissions and Renewable Energy in the Netherlands (Bokeh) - Adaptation of renewable energy sources to reduce Co2
   emission growth, Eindhoven University of Technology (2020)

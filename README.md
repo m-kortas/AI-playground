@@ -1,6 +1,8 @@
 # DS-code
 
-Small deep learning, machine learning, NLP and visualisation projects
+Small deep learning, machine learning, NLP and visualisation projects.
+## Some of the projects were used as a training many years ago and contain many misperfections. 
+## Left as lessons and baselines for future skills development comparison.
 
 ## Natural Language Processing:
 
@@ -24,8 +26,8 @@ Small deep learning, machine learning, NLP and visualisation projects
 
 - Predicting water potability (Random Forest
   Classification) **[Kaggle - Predicting if water is safe for human consumption](https://www.kaggle.com/adityakadiwal/water-potability)** (
-    2021)
-- Clustering user according to psychological profiles and demography (KMeans clustering) (2021)
+    2020)
+- Clustering user according to psychological profiles and demography (KMeans clustering) (2020)
 - Covid Impact By Country - the influence of lockdowns, vaccinations and Human Development Index (Random Forest,
   Explainable AI) (2021)
 - Hofstede's Cultural Dimensions Clustering - comparing and contrasting cultures of different countries based on six

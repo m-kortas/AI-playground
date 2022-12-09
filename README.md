@@ -8,6 +8,7 @@ Small deep learning, machine learning, NLP and visualisation projects.
 
 - #ClimateStrikes Tweets Sentiment Analysis Application (R Shiny, NLP)
     - **[Check out the app!](https://mkortas.shinyapps.io/The-Greta-Effect/)** (2020)
+- Recommender System - recommending job offer based on the jobs applied/searched (2022)
 
 ## Deep Learning
 
